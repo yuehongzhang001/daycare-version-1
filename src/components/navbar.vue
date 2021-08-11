@@ -3,22 +3,23 @@
     <div class="nav-container">
       <nav class="nav">
         <ul class="main-menu">
-          <li><router-link to="/index">Home</router-link></li>
-          <li><router-link to="/news">News</router-link></li>
+          <li><router-link to="/index" class="path">Home</router-link></li>
+          <li><router-link to="/news" class="path">News</router-link></li>
           <li>
             <el-dropdown :hide-on-click="false">
-              <span class="el-dropdown-link">
+              <span class="el-dropdown-link path" >
                 activities<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item >activity 1</el-dropdown-item>
-                <el-dropdown-item divided>activity 2</el-dropdown-item>
+                <el-dropdown-item > <router-link :to="'/activity/'+id" class="drop path">activity 1</router-link></el-dropdown-item>
+                <el-dropdown-item > <router-link :to="'/activity/'+id" class="drop path">activity 2</router-link></el-dropdown-item>
                 <el-dropdown-item divided>activity 3</el-dropdown-item>
                 <el-dropdown-item divided>activity 4</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </li>
-          <li><a href="/admin.html">admin</a></li>
+          <li><router-link to="/waiting-list" class="path">Waiting List</router-link></li>
+          <li><a href="/admin.html" class="path">admin</a></li>
           <!-- <li><el-dropdown-item divided>activity 4</el-dropdown-item></li> -->
         </ul>
       </nav>
@@ -35,6 +36,7 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
+      id: 1
     };
   },
   methods: {
@@ -45,7 +47,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="css" scoped>
 .nav {
   text-align: center;
 }
@@ -110,5 +112,12 @@ export default {
 }
 .el-icon-arrow-down {
   font-size: 1rem;
+}
+.drop{
+  text-decoration:none;
+  color: white;
+}
+.path:hover{
+  color: red!important;
 }
 </style>

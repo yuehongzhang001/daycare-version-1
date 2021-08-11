@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
 .img-container{
     float: left;
     position: relative;

@@ -1,4 +1,5 @@
 <template>
+<div class="page-body">
   <div class="timeline-container">
     <div class="block">
       <el-timeline>
@@ -25,21 +26,30 @@
       </el-timeline>
     </div>
   </div>
+
+</div>
+  
 </template>
 
 <script>
-export default {};
-</script>s
+
+export default {
+
+}
+</script>
 
 <style>
-.block {
-  width: 60%;
-  margin: auto;
-}
-.timeline-container{
+.page-body{
     text-align: center;
     padding: 3rem 0 0 0;
 }
+.timeline-container{
+    max-width: 80rem;
+    margin: auto;
+}
+
+
+
 .timeline-badge{
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: 100%;
@@ -71,5 +81,9 @@ export default {};
     border-bottom-left-radius: 50%;
     background-color: #b70707;
 
+}
+.el-timeline-item__wrapper{
+  padding: 1rem;
+  max-width: 60rem;
 }
 </style>

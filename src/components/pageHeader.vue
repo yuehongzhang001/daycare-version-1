@@ -1,5 +1,5 @@
 <template>
-  <div class="page-header">
+  <div class="page-header-my">
         <div class="word-container">
             <span class="word"><slot></slot></span>
         </div>
@@ -13,8 +13,8 @@ export default {
 }
 </script>
 
-<style>
-.page-header{
+<style lang="css" scoped>
+.page-header-my{
     width: 100%;
     background-color:#f8f7f3;
     color: #b70707;
@@ -30,9 +30,11 @@ export default {
     margin: auto;
     width: 60%;
     text-align: left;
+    padding: 0.8rem;
+
 }
 .word{
     margin: 0;
-    padding: 1rem;
+    
 }
 </style>

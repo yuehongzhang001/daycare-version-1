@@ -1,15 +1,25 @@
 <template>
   <div id="app">
+    <topbar></topbar>
+    <navbar></navbar>
     <router-view />
+    <foot></foot>
   </div>
 </template>
 
 <script>
 
-
+import navbar from "@/components/navbar.vue";
+import topbar from "@/components/topbar.vue";
+import foot from './components/foot.vue';
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    navbar,
+    topbar,
+    foot
+  },
   
 }
 
