@@ -1,24 +1,32 @@
 <template>
-  <div class="banner">
-      <img src="@/assets/banner.jpg" class="img">
-      <!-- <el-image
-          style="width: 100%"
-          src="@/assets/banner.jpg"
-          :fit="none"
-        ></el-image> -->
-     
-  </div>
+
+      <!-- <img src="@/assets/banner.jpg" class="img"> -->
+      <el-image
+          style="width: 100%;"
+          :src="url"
+          :fit="fit"
+        ></el-image>
+
 </template>
 
 <script>
+import bannerAPI from'@/apis/bannerAPI.js'
 export default {
-
+  data () {
+    return {
+      url:''
+    }
+  },
+  //require('@/assets/b2.jpg')
+  created () {
+    bannerAPI.getBanner().then(response=>{
+      this.url = response.data.data.data;
+    })
+  }
 }
 </script>
 
 <style >
 
-.img{
-    width: 100%;
-}
+
 </style>

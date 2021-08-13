@@ -1,16 +1,16 @@
 <template>
   <div class="frame-root">
     <div class="frame-container">
-      <router-link to="/activity/1"
+      <router-link :to="'/activity/'+item.activityId"
         >
         
         <el-image
-          style="image"
-          src="https://assets.myy.org/dev/wp-content/uploads/20191204181137/05_Preschool.jpg"
-          :fit="contain"
+          style="width:100%;height:250px"
+          :src="item.frontImgUrl"
+          fit="cover"
         ></el-image>
         <div class="word-container">
-          <strong>Activity 1</strong> 
+          <strong>{{item.name}}</strong> 
           <span class="more">view more</span>
           </div>
         
@@ -23,21 +23,23 @@
 export default {
   data() {
     return {
-      url:
-        "https://assets.myy.org/dev/wp-content/uploads/20191204181137/05_Preschool.jpg",
+      
     };
   },
+  props: ["item"]
 };
 </script>
 
 <style lang="css" scoped>
 .frame-root {
-  max-width: 25rem;
+  width: 33%;
+  min-width: 23rem;
+  max-width: 35rem;
   display: inline-block;
 }
 .frame-container {
   padding: 0.4rem;
-  margin: 0 1rem;
+  margin: 0.4rem;
   background-color: #f8f7f3;
   border: 1px solid #ddd;
   border-radius: 4px;

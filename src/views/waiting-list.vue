@@ -60,7 +60,7 @@
                                 >
                                   <div class="field-list clear">
                                     <fieldset
-                                      id="name-yui_3_17_2_1_1626879132982_23578"
+                                      id="name"
                                       class="form-item fields name required"
                                     >
                                       <legend class="title">
@@ -489,19 +489,12 @@
       </div>
     </div>
     <!-- Start Featured Gallery -->
-    <footer class="site-footer-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="copyrights-col-left col-md-6 col-sm-6">
-            <p>© 2021 Rupertsland Daycare Centre</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import emailAPI from '@/apis/email_api.js'
 // import mapAPI from '@/apis/map_api.js'
 import { Loader } from "@googlemaps/js-api-loader";
@@ -557,11 +550,12 @@ export default {
     });
   },
         dosubmit(){
-            emailAPI.sendEmail(this.templateParams).then(response=>{
-                console.log("dosubmit response: ", response)
-            }).catch(error=>{
-                console.log("dosubmit error: ", error)
-            })
+          this.$router.push("/waiting-list/ok")
+            // emailAPI.sendFormByEmail(this.templateParams).then(response=>{
+            //     console.log("dosubmit response: ", response)
+            // }).catch(error=>{
+            //     console.log("dosubmit error: ", error)
+            // })
         }
     }
 

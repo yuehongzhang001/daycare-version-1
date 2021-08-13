@@ -4,22 +4,27 @@
       <nav class="nav">
         <ul class="main-menu">
           <li><router-link to="/index" class="path">Home</router-link></li>
+          <li v-if="notice.visible"><router-link to="/notice" class="path">{{notice.name}}</router-link></li>
           <li><router-link to="/news" class="path">News</router-link></li>
           <li>
             <el-dropdown :hide-on-click="false">
               <span class="el-dropdown-link path" >
-                activities<i class="el-icon-arrow-down el-icon--right"></i>
+                Photos<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item > <router-link :to="'/activity/'+id" class="drop path">activity 1</router-link></el-dropdown-item>
-                <el-dropdown-item > <router-link :to="'/activity/'+id" class="drop path">activity 2</router-link></el-dropdown-item>
-                <el-dropdown-item divided>activity 3</el-dropdown-item>
-                <el-dropdown-item divided>activity 4</el-dropdown-item>
+                <div v-for="(item, index) in activityList" :key="index">
+                  <router-link :to="'/activity/'+item.activityId" class="drop path"><el-dropdown-item  v-if="index===0"> {{item.name}}</el-dropdown-item></router-link>
+                  <router-link :to="'/activity/'+item.activityId" class="drop path"><el-dropdown-item  v-if="index!==0" divided> {{item.name}}</el-dropdown-item></router-link>
+                </div>
+                
+
+                <router-link to="/gallery" class="drop path"><el-dropdown-item divided>all...</el-dropdown-item></router-link>
               </el-dropdown-menu>
             </el-dropdown>
           </li>
           <li><router-link to="/waiting-list" class="path">Waiting List</router-link></li>
-          <li><a href="/admin.html" class="path">admin</a></li>
+          <li><router-link to="/calendar" class="path">Calendar</router-link></li>
+          <li><router-link to="/contact" class="path">Contact</router-link></li>
           <!-- <li><el-dropdown-item divided>activity 4</el-dropdown-item></li> -->
         </ul>
       </nav>
@@ -31,18 +36,35 @@
 </template>
 
 <script>
+const menuLimit = 4;
+import navAPI from '@/apis/navAPI.js'
 export default {
   data() {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      id: 1
+      id: 1,
+      activityList:[],
+      notice: '',
+      noticeName:"Covid Update"
     };
+  },
+  created () {
+    this.initAcitivityMenu();
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
+    initAcitivityMenu(){
+      // call api to get activity List
+      navAPI.getNav(menuLimit).then(response=>{
+        console.log("getNav: ",response)
+        this.activityList= response.data.data.activityList;
+        this.notice = response.data.data.notice;
+
+      })
+    }
   },
 };
 </script>
@@ -61,10 +83,10 @@ export default {
 
 /* self defined */
 .nav-container{
-  font-family: "Open Sans";
+
   font-size: 1.3rem;
   color: white;
-  background-color: rgba(0, 0, 0, 0.86);
+  background-color: #409EFF;
   padding: 1rem 0rem;
 }
 
@@ -95,7 +117,7 @@ export default {
   font-size: 1.3rem!important;
   font-family: "Open Sans"!important;
   color: white!important;
-   background-color: rgba(0, 0, 0, 0.86)!important;
+   background-color: #409EFF!important;
 }
 .el-dropdown-menu__item{
   font-size: 1.3rem!important;
@@ -120,4 +142,5 @@ export default {
 .path:hover{
   color: red!important;
 }
+
 </style>

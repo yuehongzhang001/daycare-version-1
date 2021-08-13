@@ -47,77 +47,8 @@
                 </div>
               </div>
             </div>
-            <div class="col sqs-col-2 span-2">
-              <div
-                class="sqs-block html-block sqs-block-html"
-                data-block-type="2"
-                id="block-yui_3_17_2_2_1508178717394_35681"
-              >
-                <div class="sqs-block-content">
-                  <h3 style="white-space:pre-wrap;">Info</h3>
-                  <p class="" style="white-space:pre-wrap;">
-                    <a href="/about-us">About Us</a><br /><a
-                      href="/snack-program"
-                      >School Programs</a
-                    ><br /><a href="/tuition-1">Tuition</a><br /><a
-                      href="/calendar"
-                      >Calendar</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col sqs-col-3 span-3">
-              <div
-                class="sqs-block html-block sqs-block-html"
-                data-block-type="2"
-                id="block-yui_3_17_2_3_1508345645420_17466"
-              >
-                <div class="sqs-block-content">
-                  <h3 style="white-space:pre-wrap;">Action</h3>
-                  <p class="" style="white-space:pre-wrap;">
-                    <a href="/contact">Contact</a><br /><a href="/donate-1"
-                      >Donate</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col sqs-col-3 span-3">
-              <div
-                class="sqs-block socialaccountlinks-v2-block sqs-block-socialaccountlinks-v2"
-                data-block-type="54"
-                id="block-yui_3_17_2_14_1508259365927_6344"
-              >
-                <div class="sqs-block-content">
-                  <div
-                    class="sqs-svg-icon--outer social-icon-alignment-left social-icons-color-white social-icons-size-extra-small social-icons-style-regular "
-                  >
-                    <nav class="sqs-svg-icon--list">
-                      <a
-                        href="#"
-                        target="_blank"
-                        class="sqs-svg-icon--wrapper instagram"
-                        aria-label="Winnipeg Montessori School"
-                      >
-                        <div>
-                          <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
-                            <use
-                              class="sqs-use--icon"
-                              xlink:href="#instagram-icon"
-                            ></use>
-                            <use
-                              class="sqs-use--mask"
-                              xlink:href="#instagram-mask"
-                            ></use>
-                          </svg>
-                        </div>
-                      </a>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
+            
           </div>
         </div>
 
@@ -131,7 +62,7 @@
             data-updated-on="1452386857557"
             id="footerBlocksMiddle"
           >
-            <div class="row sqs-row">
+            <div class="row sqs-row foot-container">
               <div class="col sqs-col-12 span-12"></div>
             </div>
           </div>
@@ -158,4 +89,8 @@ export default {};
 </script>
 
 <style src="@/assets/bootstrap/css/bootstrap.css" scoped></style>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.foot-container{
+  text-align: center;
+}
+</style>

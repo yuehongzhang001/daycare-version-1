@@ -1,28 +1,44 @@
 <template>
-  <div>
-    <banner></banner>
-
+  <div> 
+    <div style="line-height:1rem;">
+      <banner></banner>
+      <coming-event></coming-event>
+    </div>
+    
     <div class="home-body-container">
+      
       <div class="home-content-container">
+        
         <header class="list-header-my">
           <div class="more-title">
             Activity Photos
-            <router-link to="/gallery">( view all )</router-link>
+            <router-link to="/gallery" class="link">( view all )</router-link>
           </div>
         </header>
-        <div ><frame></frame><frame></frame><frame></frame></div>
+
+        <div>
+          <frame
+            v-for="(item, index) in activityList"
+            :key="index"
+            :item="item"
+          ></frame>
+        </div>
         <header class="list-header-my">
           <div class="more-title">
-            News <a href="./activityList.html" class="no-dec">( view all )</a>
+            News <router-link to="/news" class="link">( view all )</router-link>
           </div>
         </header>
         <section class="news-body">
           <ul class="news-list">
-            <li><news-item></news-item></li>
-            <li><news-item></news-item></li>
+            <li
+              class="news-item-home"
+              v-for="(item, index) in newsList"
+              :key="index"
+            >
+              <news-item :item="item"></news-item>
+            </li>
           </ul>
         </section>
-        
       </div>
     </div>
   </div>
@@ -31,16 +47,43 @@
 <script>
 import banner from "@/components/banner.vue";
 import frame from "@/components/frame.vue";
-import newsItem from '../components/news-item.vue';
+import newsItem from "../components/news-item.vue";
+import activityAPI from "@/apis/activity_api.js";
+import newsAPI from "@/apis/news_api.js";
 
+import ComingEvent from '../components/comingEvent.vue';
+
+const picLimit = 3;
+const newsLimit = 5;
 export default {
+  data() {
+    return {
+      activityList: [],
+      newsList: [],
+    };
+  },
   components: {
     banner,
     frame,
     newsItem,
+    ComingEvent
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      activityAPI.getActivityList(picLimit).then((response) => {
+        this.activityList = response.data.data.data;
+      });
+      newsAPI.getNewsList(newsLimit).then((response) => {
+        this.newsList = response.data.data.data;
+      });
+    },
   },
 };
 </script>
+
 
 <style lang="css" scoped>
 .home-content-container {
@@ -65,7 +108,7 @@ export default {
 }
 .more-title {
   text-align: left;
-  padding-left: 4rem;
+  padding-left: 1rem;
   font-size: 1.3rem;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: 100%;
@@ -81,15 +124,22 @@ export default {
   visibility: visible;
   transition: opacity 0.24s ease-in-out;
 }
-.no-dec {
-  color: #333;
 
-}
 .news-list {
   list-style: none;
-  padding-left: 4rem;
+  padding-left: 1rem;
+  max-width: 80%;
 }
-.news-body{
+.news-body {
   text-align: left;
 }
+.news-item-home {
+  padding: 1rem 0;
+  border-top: solid #e4dfdf 1px;
+}
+.link {
+  color: #337ab7;
+}
+
+
 </style>

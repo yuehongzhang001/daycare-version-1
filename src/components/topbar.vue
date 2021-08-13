@@ -1,6 +1,7 @@
 <template>
 
   <div class="topbar">
+      
         <div class="img-container">
             <img src="@/assets/logo.png">
         </div>
@@ -18,10 +19,11 @@ export default {
     float: left;
     position: relative;
     left: 20%;
+    top: -20%;
 }
 .topbar{
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.32);
+    height: 30px;
+    background-color: fff;
     padding: 1rem;
 }
 </style>

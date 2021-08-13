@@ -1,28 +1,47 @@
 <template>
   <div>
     <div class="activity-container">
-      <div class="description">{{ description }}</div>
+      <div class="description">{{ activity.description }}</div>
       <div class="gallery">
-        <el-image style="activity-picture" :src="url" :fit="fit"></el-image>
-        <el-image
-          style="activity-picture"
-          src="https://images.squarespace-cdn.com/content/v1/5bdf2d01b40b9d7b5b80c2af/1543865727110-R82CW5O6FROWD92PE3PL/ke17ZwdGBToddI8pDm48kMFiMyT1nneRMhnmfuSfpxZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0mlM0or4nqX7jrn5yWu0hA1QXedaIFqnAbw_tQShHbKg4-O_KAc44ak5jGzrnn7f3A/VegDaycareA-3.jpg"
-          :fit="fit"
-        ></el-image>
+        <div class="activity-picture" v-for="picture in activity.pictureList" :key="picture.picId" >
+          <el-image   :src="picture.url" :fit="cover" style="width:100%;"></el-image>
+        </div>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import activityAPI from "@/apis/activity_api.js";
 export default {
   data() {
     return {
-      description: "This is a description",
-      url:
-        "https://assets.myy.org/dev/wp-content/uploads/20191204181137/05_Preschool.jpg",
+      activity_id: "",
+      activity:[],
+
       fit: "contain",
     };
+  },
+  created() {
+    this.activity_id = this.$route.params.id;
+    this.init();
+  },
+  watch: {
+    $route(to,from){
+      console.log("to:",to," from: ",from);
+      this.activity_id = this.$route.params.id;
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      // get Activity And Pics
+      activityAPI.getActivityAndPics(this.activity_id).then((response) => {
+        this.activity = response.data.data.data
+        // console.log("response", this.data);
+      });
+    },
   },
 };
 </script>
@@ -34,12 +53,12 @@ export default {
   text-align: left;
 }
 .activity-container {
-  max-width: 750px;
+  max-width: 60rem;
   text-align: center;
   margin: auto;
   padding: 5px;
 }
 .activity-picture {
-  width: 1200px;
+
 }
 </style>
