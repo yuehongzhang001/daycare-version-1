@@ -11,7 +11,7 @@
       <h3 class="title">Admin Login</h3>
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user" />
+          <i class="el-icon-user"></i>
         </span>
         <el-input
           v-model="loginForm.username"
@@ -23,7 +23,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password" />
+          <i class="el-icon-lock"></i>
         </span>
         <el-input
           :type="pwdType"
@@ -199,10 +199,10 @@ $light_gray: #eee;
     }
   }
   .svg-container {
-    padding: 6px 5px 6px 15px;
+    padding: 5px;
     color: $dark_gray;
-    vertical-align: middle;
-    width: 30px;
+
+    width: 15px;
     display: inline-block;
   }
   .title {
