@@ -13,7 +13,7 @@
           :show-file-list="false"
           :on-success="handleUploadSuccess"
           :before-upload="handleBeforeUpload"
-          action="http://localhost:9000/tools/oss/upload"
+          action="http://15.222.62.243:9000/tools/oss/upload"
           class="banner-uploader"
           v-loading="loading"
         >

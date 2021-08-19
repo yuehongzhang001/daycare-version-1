@@ -14,7 +14,6 @@ import 'quill/dist/quill.snow.css'
 
 import 'quill/dist/quill.bubble.css'
 
-
 Vue.use(ElementUI,{locale});
 Vue.config.productionTip = false
 Vue.use(VueQuillEditor, /* { default global options } */)

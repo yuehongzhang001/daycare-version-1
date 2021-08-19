@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       /**for img upload */
-      uploadUrl: "http://localhost:9000/tools/oss/upload",
+      uploadUrl: "http://15.222.62.243:9000/tools/oss/upload",
       /**for form */
       form: {
         activityId: "",

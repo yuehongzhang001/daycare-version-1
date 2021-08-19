@@ -8,7 +8,9 @@ import locale from 'element-ui/lib/locale/lang/en.js'
 
 Vue.use(ElementUI,{locale});
 Vue.config.productionTip = false
-
+Vue.prototype.URL = function () {
+  return 'http://15.222.62.243:9000';
+};
 new Vue({
   render: h => h(App),
   router,

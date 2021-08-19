@@ -3,7 +3,7 @@ import cookie from 'js-cookie'
 import {Message} from 'element-ui'
 
 const service = axios.create({
-    baseURL: 'http://localhost:9000',
+    baseURL: 'http://15.222.62.243:9000',
     timeout: 20000
 })
 
