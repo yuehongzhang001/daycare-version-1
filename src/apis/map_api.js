@@ -3,7 +3,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 export default {
   loadMap() {
     let map;
-    const YOUR_API_KEY = "AIzaSyBFrzy71_H7XTAZqAhSQf2yjPNUsKNYldk";
+    const YOUR_API_KEY = "****";
     const loader = new Loader({
       apiKey: YOUR_API_KEY,
       version: "weekly",
